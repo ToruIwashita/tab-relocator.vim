@@ -11,10 +11,10 @@ let s:cpo_save = &cpo
 set cpo&vim
 
 function! shift_window_to_tab#shift()
-  let s:shift_window_to_tab#target_buffer = bufnr('%')
+  let l:target_buffer = bufnr('%')
   close
-  tabnew | buffer s:shift_window_to_tab#target_buffer
-  unlet s:shift_window_to_tab#target_buffer
+  silent! execute 'tabnew | buffer '.l:target_buffer
+  unlet l:target_buffer
 endfunction
 
 let &cpo = s:cpo_save
