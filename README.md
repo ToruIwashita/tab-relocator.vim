@@ -1,2 +1,2 @@
-# shift-window-to-tab.vim
-Close current window, and open new tab
+# tab-assist.vim
+Assist to move the tab
