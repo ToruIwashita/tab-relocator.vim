@@ -1,2 +1,2 @@
-# tab-assist.vim
+# tabmove-assist.vim
 Assist to move the tab
