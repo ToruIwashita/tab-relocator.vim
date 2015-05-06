@@ -11,15 +11,15 @@ let s:cpo_save = &cpo
 set cpo&vim
 
 function! tabmove_assist#shift()
-  let l:target_buffer = bufnr('%')
+  let target_buffer = bufnr('%')
   close
-  silent! execute 'tabnew | buffer '.l:target_buffer
-  unlet l:target_buffer
+  silent! execute 'tabnew | buffer '.target_buffer
+  unlet target_buffer
 endfunction
 
 function! tabmove_assist#move(num)
-  let l:num = a:num - 1
-  silent! execute 'tabmove '.l:num
+  let num = a:num - 1
+  silent! execute 'tabmove '.num
 endfunction
 
 let &cpo = s:cpo_save
