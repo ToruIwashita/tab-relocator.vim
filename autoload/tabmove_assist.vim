@@ -11,15 +11,21 @@ let s:cpo_save = &cpo
 set cpo&vim
 
 function! tabmove_assist#shift()
-  let target_buffer = bufnr('%')
-  close
-  silent! execute 'tabnew | buffer '.target_buffer
-  unlet target_buffer
+  let org_tab_number = tabpagenr()
+  execute 'tabedit %'
+  let dist_tab_number = tabpagenr()
+  execute 'tabnext '.org_tab_number
+  hide
+  execute 'tabnext '.dist_tab_number
 endfunction
 
 function! tabmove_assist#move(num)
-  let num = a:num - 1
-  silent! execute 'tabmove '.num
+  if a:num <= tabpagenr()
+    let dist_tab_number = a:num - 1
+  else
+    let dist_tab_number = a:num
+  end
+  execute 'tabmove '.dist_tab_number
 endfunction
 
 let &cpo = s:cpo_save
