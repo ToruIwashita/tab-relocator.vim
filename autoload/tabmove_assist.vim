@@ -20,11 +20,7 @@ function! tabmove_assist#shift()
 endfunction
 
 function! tabmove_assist#move(num)
-  if a:num <= tabpagenr()
-    let dist_tab_number = a:num - 1
-  else
-    let dist_tab_number = a:num
-  end
+  let dist_tab_number = a:num - 1
   execute 'tabmove '.dist_tab_number
 endfunction
 
