@@ -11,12 +11,12 @@ let s:cpo_save = &cpo
 set cpo&vim
 
 function! tabmove_assist#shift()
-  let org_tab_number = tabpagenr()
-  execute 'tabedit %'
-  let dist_tab_number = tabpagenr()
-  execute 'tabnext '.org_tab_number
-  hide
-  execute 'tabnext '.dist_tab_number
+  if winnr('$') == 1
+    return 0
+  endif
+
+  tabedit %
+  tabp | hide | tabn
 endfunction
 
 function! tabmove_assist#move(num)
