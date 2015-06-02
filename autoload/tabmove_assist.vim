@@ -15,8 +15,10 @@ function! tabmove_assist#shift()
     return 0
   endif
 
+  let current_line_number = line('.')
+
   tabedit %
-  tabp | hide | tabn
+  tabp | hide | tabn | execute current_line_number
 endfunction
 
 function! tabmove_assist#move(num)
