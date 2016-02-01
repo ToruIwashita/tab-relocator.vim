@@ -31,17 +31,23 @@ function! tabmove_assist#shift()
     return 0
   endif
 
-  let current_line_number = line('.')
+  let current_line_num = line('.')
 
   tabedit %
   tabp | hide | tabn
-  execute current_line_number
+  execute current_line_num
   execute 'normal! '.s:after_shift() 
 endfunction
 
 function! tabmove_assist#move(num)
-  let dist_tab_number = a:num - 1
-  execute 'tabmove '.dist_tab_number
+  let current_tab_num = tabpagenr()
+
+  if a:num < current_tab_num
+    let dist_tab_num = a:num - 1
+  else
+    let dist_tab_num = a:num
+  end
+  execute 'tabmove '.dist_tab_num
 endfunction
 
 let &cpo = s:cpo_save
