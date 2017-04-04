@@ -1,5 +1,5 @@
 " File: plugin/tabmove_assist.vim
-" Author: Toru Hoyano <toru.iwashita@gmail.com>
+" Author: ToruIwashita <toru.iwashita@gmail.com>
 " License: MIT License
 
 if exists('g:loaded_tabmove_assist')
