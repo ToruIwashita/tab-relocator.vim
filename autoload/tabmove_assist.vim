@@ -29,7 +29,11 @@ function! tabmove_assist#shift()
   let current_line_num = line('.')
 
   tabedit %
-  tabp | hide | tabn
+
+  tabp
+  hide
+  tabn
+
   execute current_line_num
   execute 'normal! '.s:after_shift() 
 endfunction
