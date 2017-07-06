@@ -1,16 +1,16 @@
-" File: autoload/tabmove_assist.vim
+" File: autoload/tab_relocator.vim
 " Author: ToruIwashita <toru.iwashita@gmail.com>
 " License: MIT License
 
 let s:cpo_save = &cpo
 set cpo&vim
 
-if !exists('g:tabmove_assist_after_shift')
-  let g:tabmove_assist_after_shift = 'zz'
+if !exists('g:tab_relocator_after_shift')
+  let g:tab_relocator_after_shift = 'zz'
 endif
 
 function! s:after_shift()
-  let action = g:tabmove_assist_after_shift
+  let action = g:tab_relocator_after_shift
 
   if match(action, 'zt') != -1
     return 'zt'
@@ -21,7 +21,7 @@ function! s:after_shift()
   endif
 endfunction
 
-function! tabmove_assist#shift()
+function! tab_relocator#shift()
   if winnr('$') == 1
     return 0
   endif
@@ -38,7 +38,7 @@ function! tabmove_assist#shift()
   execute 'normal! '.s:after_shift() 
 endfunction
 
-function! tabmove_assist#move(num)
+function! tab_relocator#move(num)
   let current_tab_num = tabpagenr()
 
   if a:num < current_tab_num
@@ -46,7 +46,7 @@ function! tabmove_assist#move(num)
   else
     let dist_tab_num = a:num
   end
-  execute 'tabmove '.dist_tab_num
+  execute 'TabMove '.dist_tab_num
 endfunction
 
 let &cpo = s:cpo_save
