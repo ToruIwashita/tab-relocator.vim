@@ -46,7 +46,7 @@ function! tab_relocator#move(num)
   else
     let dist_tab_num = a:num
   end
-  execute 'TabMove '.dist_tab_num
+  execute 'tabmove '.dist_tab_num
 endfunction
 
 let &cpo = s:cpo_save
