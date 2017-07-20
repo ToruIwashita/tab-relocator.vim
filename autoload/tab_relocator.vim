@@ -49,5 +49,15 @@ function! tab_relocator#move(num)
   execute 'tabmove '.dist_tab_num
 endfunction
 
+fun! tab_relocator#tab_new_at_first()
+  tabnew
+  call tab_relocator#move(1)
+endf
+
+fun! tab_relocator#tab_new_at_last()
+  tabl
+  tabnew
+endf
+
 let &cpo = s:cpo_save
 unlet s:cpo_save
