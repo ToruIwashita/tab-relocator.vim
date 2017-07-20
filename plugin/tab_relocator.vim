@@ -12,6 +12,8 @@ set cpo&vim
 
 command! TabShift call tab_relocator#shift()
 command! -nargs=1 TabMove call tab_relocator#move(<args>)
+command! TabNewAtFirst call tab_relocator#tab_new_at_first()
+command! TabNewAtLast call tab_relocator#tab_new_at_last()
 
 let &cpo = s:cpo_save
 unlet s:cpo_save
