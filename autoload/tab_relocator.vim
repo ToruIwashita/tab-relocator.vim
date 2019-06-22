@@ -2,19 +2,19 @@
 " Author: ToruIwashita <toru.iwashita@gmail.com>
 " License: MIT License
 
-let s:cpo_save = &cpo
-set cpo&vim
+let s:cpo_save = &cpoptions
+set cpoptions&vim
 
 if !exists('g:tab_relocator_after_shift')
   let g:tab_relocator_after_shift = 'zz'
 endif
 
 function! s:after_shift()
-  let action = g:tab_relocator_after_shift
+  let l:action = g:tab_relocator_after_shift
 
-  if match(action, 'zt') != -1
+  if match(l:action, 'zt') != -1
     return 'zt'
-  elseif match(action, 'zb') != -1
+  elseif match(l:action, 'zb') != -1
     return 'zb'
   else
     return 'zz'
@@ -26,7 +26,7 @@ function! tab_relocator#shift()
     return 0
   endif
 
-  let current_line_num = line('.')
+  let l:current_line_num = line('.')
 
   tabedit %
 
@@ -34,19 +34,19 @@ function! tab_relocator#shift()
   hide
   tabn
 
-  execute current_line_num
-  execute 'normal! '.s:after_shift() 
+  execute l:current_line_num
+  execute 'normal! '.s:after_shift()
 endfunction
 
 function! tab_relocator#move(num)
-  let current_tab_num = tabpagenr()
+  let l:current_tab_num = tabpagenr()
 
-  if a:num < current_tab_num
-    let dist_tab_num = a:num - 1
+  if a:num < l:current_tab_num
+    let l:dist_tab_num = a:num - 1
   else
-    let dist_tab_num = a:num
+    let l:dist_tab_num = a:num
   end
-  execute 'tabmove '.dist_tab_num
+  execute 'tabmove '.l:dist_tab_num
 endfunction
 
 fun! tab_relocator#tab_new_at_first()
@@ -59,5 +59,5 @@ fun! tab_relocator#tab_new_at_last()
   tabnew
 endf
 
-let &cpo = s:cpo_save
+let &cpoptions = s:cpo_save
 unlet s:cpo_save
